@@ -37,7 +37,7 @@
         <div class="mb-0" id="home">
             <!--begin::Wrapper-->
             <div class="bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom landing-dark-bg"
-                style="background-image: url(assets/media/svg/illustrations/landing.svg)">
+                style="background-image: url({{ asset('assets/media/svg/illustrations/landing.svg') }})">
                 <!--begin::Header-->
                 <div class="landing-header" data-kt-sticky="true" data-kt-sticky-name="landing-header"
                     data-kt-sticky-offset="{default: '200px', lg: '300px'}">
@@ -137,7 +137,7 @@
                             </span>
                         </h1>
                         <!--end::Title-->
-                        
+
                     </div>
                     <!--end::Heading-->
                     <!--begin::Clients-->
@@ -1951,7 +1951,7 @@
             <!--end::Container-->
         </div>
         <!--end::Team Section-->
-        
+
         <!--begin::Pricing Section-->
         <div class="mt-sm-n20">
             <!--begin::Curve top-->
@@ -1963,7 +1963,7 @@
                 </svg>
             </div>
             <!--end::Curve top-->
-         
+
             <!--begin::Curve bottom-->
             <div class="landing-curve landing-dark-color">
                 <svg viewBox="15 12 1470 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2167,7 +2167,7 @@
                     <!--end::Col-->
                 </div>
                 <!--end::Row-->
-                
+
             </div>
             <!--end::Container-->
         </div>

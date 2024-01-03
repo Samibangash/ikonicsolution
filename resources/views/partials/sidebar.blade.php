@@ -49,17 +49,20 @@
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                <div  class="menu-item menu-accordion {{ request()->routeIs('user.*') ? 'here show':'' }}">
                     <!--begin:Menu link-->
                     <span class="menu-link">
-                        <span class="menu-icon">
+                        <a class="menu-link" href="{{ route('user.list') }}">
+                             <span class="menu-icon">
                             <i class="ki-duotone ki-address-book fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                                 <span class="path3"></span>
                             </i>
                         </span>
-                        <span class="menu-title">User Profile</span>
+                            <span class="menu-title">User</span>
+                        </a>
+
                     </span>
                     <!--end:Menu link-->
 
