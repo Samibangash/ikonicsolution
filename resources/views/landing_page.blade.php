@@ -11,9 +11,9 @@
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="/assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap-5.0.2-dist/css/bootstrap.min.css') }}">
     <!-- custom css -->
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
@@ -92,7 +92,7 @@
                 <div class="collection-list mt-4 row gx-0 gy-3">
                     <div class="col-md-6 col-lg-3 col-xl-3 p-2 best">
                         <div class="collection-img position-relative">
-                            <img src="/assets/images/c_formal_gray_shirt.png" class="w-100">
+                            <img src="{{ asset('assets/images/c_formal_gray_shirt.png') }}" class="w-100">
                             <span
                                 class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
                         </div>
@@ -120,7 +120,7 @@
 
                     <div class="col-md-6 col-lg-4 col-xl-3 p-2 feat">
                         <div class="collection-img position-relative">
-                            <img src="/assets/images/c_pant_girl.png" class="w-100">
+                            <img src="{{ asset('assets/images/c_pant_girl.png') }}" class="w-100">
                             <span
                                 class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
                         </div>
@@ -147,7 +147,7 @@
 
                     <div class="col-md-6 col-lg-4 col-xl-3 p-2 new">
                         <div class="collection-img position-relative">
-                            <img src="/assets/images/c_polo-shirt.png" class="w-100">
+                            <img src="{{ asset('assets/images/c_polo-shirt.png') }}" class="w-100">
                             <span
                                 class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
                         </div>
@@ -174,7 +174,7 @@
 
                     <div class="col-md-6 col-lg-4 col-xl-3 p-2 best">
                         <div class="collection-img position-relative">
-                            <img src="/assets/images/c_shirt-girl.png" class="w-100">
+                            <img src="{{ asset('assets/images/c_shirt-girl.png') }}" class="w-100">
                             <span
                                 class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
                         </div>
@@ -201,7 +201,7 @@
 
                     <div class="col-md-6 col-lg-4 col-xl-3 p-2 feat">
                         <div class="collection-img position-relative">
-                            <img src="/assets/images/c_t-shirt_men.png" class="w-100">
+                            <img src="{{ asset('assets/images/c_t-shirt_men.png') }}" class="w-100">
                             <span
                                 class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
                         </div>
@@ -228,7 +228,7 @@
 
                     <div class="col-md-6 col-lg-4 col-xl-3 p-2 new">
                         <div class="collection-img position-relative">
-                            <img src="/assets/images/c_tunic-shirt_girl.png" class="w-100">
+                            <img src="{{ asset('assets/images/c_tunic-shirt_girl.png') }}" class="w-100">
                             <span
                                 class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
                         </div>
@@ -255,7 +255,7 @@
 
                     <div class="col-md-6 col-lg-4 col-xl-3 p-2 best">
                         <div class="collection-img position-relative">
-                            <img src="/assets/images/c_undershirt.png" class="w-100">
+                            <img src="{{ asset('assets/images/c_undershirt.png') }}" class="w-100">
                             <span
                                 class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
                         </div>
@@ -282,7 +282,7 @@
 
                     <div class="col-md-6 col-lg-4 col-xl-3 p-2 feat">
                         <div class="collection-img position-relative">
-                            <img src="/assets/images/c_western-shirt.png" class="w-100">
+                            <img src="{{ asset('assets/images/c_western-shirt.png') }}" class="w-100">
                             <span
                                 class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
                         </div>
@@ -632,13 +632,13 @@
         </div>
     </div>
     <!-- jquery -->
-    <script src="/assets/js/jquery-3.6.0.js"></script>
+    <script src="{{ asset('assets/js/jquery-3.6.0.js') }}"></script>
     <!-- isotope js -->
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
     <!-- bootstrap js -->
-    <script src="/assets/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <script src="{{ asset('assets/bootstrap-5.0.2-dist/js/bootstrap.min.js') }}"></script>
     <!-- custom js -->
-    <script src="/assets/js/script.js"></script>
+    <script src="{{ asset('assets/js/script.js') }}"></script>
 
     <!-- Custom JS -->
     <script>
