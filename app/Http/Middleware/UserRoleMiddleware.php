@@ -21,10 +21,10 @@ class UserRoleMiddleware
         }
         if (Auth::user()->role == "admin")
         {
-//            return redirect('/doctor/dashboard');
+            return redirect('/dashboard');
         }elseif (Auth::user()->role == "user")
         {
-//            return redirect('/admin/dashboard');
+            return redirect('/');
         }
         return response()->json(["you don't have Permission to access this page"]);
     }

@@ -57,7 +57,7 @@
     </nav>
     <!-- end of navbar -->
 
-    
+
 
     <!-- collection -->
     <section id="collection" class="py-5">
@@ -70,206 +70,117 @@
                 <div class="collection-list mt-4 row gx-0 gy-3">
                     <div class="col-md-12 col-lg-12 col-xl-12 p-2 best flex justify-content-center">
                         <div class="collection-img position-relative">
-                            <img src="{{ asset('assets/images/c_formal_gray_shirt.png') }}" class="w-100 " style="height:800px">
+                            <img src="{{ asset('/storage/images/product/'.$product->image) }}" class="w-100 " style="height:800px">
                             <span
                                 class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
                         </div>
                         <div class="text-center">
-                            <div class="rating mt-3">
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                            </div>
-                            <p class="text-capitalize my-1">gray shirt</p>
-                            
+
+                            <p class="text-capitalize my-1">{{ $product->name ?? '' }}</p>
+
                         </div>
                         <!-- Feedback Icon Button -->
-                     
+
                     </div>
 
                 </div>
-   
-                <div class="feedback-item mb-3">
-                        <div class="d-flex mb-2">
-                            <img src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=996&t=st=1704346895~exp=1704347495~hmac=4700270e7e8a972f2bef5bd026e32136ac33489968951d563263f2b44f9003f6" alt="User" class="rounded-circle"
-                                style="width: 60px; height: 60px; margin-right: 12px;">
-                            <div>
-                                <div class="fw-bold">Carles Nilson</div>
-                                <div class="text-muted small">Yesterday at 5:06 PM</div>
-                                <p>Outlines keep you honest. They stop you from indulging in poorly thought-out
-                                    metaphors about driving and keep you focused on the overall structure of your post.
-                                </p>
-                                <div class="d-flex align-items-center">
-                                    <button class="btn p-0 border-0 text-black me-4 reply-button">Reply</button>
-                                    <button class="btn p-0 border-0 me-4 like-button">
-                                        <i class="far fa-thumbs-up"></i> Like
-                                    </button>
-                                    <button class="btn p-0 border-0 text-primary vote-button">
-                                        <i class="fas fa-vote-yea"></i> Vote
-                                    </button>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3> Feedback & Comments </h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="feedback-item mb-3">
+                                    @foreach($product->product_feedback as $data)
+                                        <div class="d-flex mb-2">
+                                            <img src="{{ asset('assets/media/avatars/blank.png') }}" alt="User" class="rounded-circle" style="width: 60px; height: 60px; margin-right: 12px;">
+                                            <div>
+                                                <div class="fw-bold">
+                                                    {{ $data->getUser->name ?? '' }}
+                                                </div>
+                                                <div class="text-muted small">
+                                                    {{ optional($data->created_at)->isYesterday() ? 'Yesterday at ' . optional($data->created_at)->format('g:i A') : optional($data->created_at)->format('M j, Y \a\t g:i A') }}
+                                                </div>
+                                                <p>
+                                                    {{ $data->description ?? '' }}
+                                                </p>
+
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="reply-form   mb-3 ms-5">
+                                            <div class="d-flex align-items-center mb-5">
+                                                <a href="{{ route('feedback.count',$data->id) }}" class="btn p-0 border-0 text-primary vote-button" >
+                                                    <i class="fas fa-vote-yea"></i>
+                                                    Vote
+                                                </a>
+                                                <span id="vote-count">{{ $data->getFeedbackVoteCount() }}</span>
+
+
+                                            </div>
+                                            <form class="form" method="Post"  action="{{ route('product.productFeedbackComment') }}" enctype="multipart/form-data">
+                                                @csrf
+                                                <input type="hidden" name="product_feedback_id" value="{{ $data->id }}">
+                                                <input type="hidden" name="parent_id" value="0">
+                                                <input class="form-control mb-2" name="comment" rows="1" placeholder="Write a reply..."></input>
+
+                                                <button type="submit" class="btn btn-primary btn-sm post-reply">Post Reply</button>
+                                            </form>
+                                        </div>
+                                        @if(count($data->getComment) > 0 )
+                                            <div class="row mb-5">
+                                                    <div class="col-sm-12">
+                                                        <div class="card">
+                                                            <div class="card-header">
+                                                                Comments
+                                                            </div>
+                                                            <div class="card-body">
+                                                                @foreach($data->getComment as $comment)
+
+                                                                    <img src="{{ asset('assets/media/avatars/blank.png') }}" alt="User" class="rounded-circle"
+                                                                         style="width: 60px; height: 60px; margin-right: 12px;">
+                                                                    <div>
+                                                                        <div class="fw-bold">
+                                                                            {{ $data->getUser->name ?? '' }}
+                                                                        </div>
+                                                                        <div class="text-muted small">
+                                                                            {{ optional($data->created_at)->isYesterday() ? 'Yesterday at ' . optional($data->created_at)->format('g:i A') : optional($data->created_at)->format('M j, Y \a\t g:i A') }}
+                                                                        </div>
+                                                                        <p>
+                                                                            {{ $data->comment ?? '' }}
+                                                                        </p>
+
+
+                                                                    </div>
+                                                                @endforeach
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                        @endif
+                                    @endforeach
+
                                 </div>
                             </div>
+
                         </div>
-                        <div class="reply-form d-none mb-3 ms-5">
-                            <input type="text" class="form-control mb-2" id="feedbackTitle" required placeholder="Name">
-                            <textarea class="form-control mb-2" rows="1" placeholder="Write a reply..."></textarea>
-                            <button class="btn btn-primary btn-sm post-reply">Post Reply</button>
-                        </div>
-                        <div class="d-flex mb-2">
-                            <img src="https://img.freepik.com/free-photo/horizontal-portrait-smiling-happy-young-pleasant-looking-female-wears-denim-shirt-stylish-glasses-with-straight-blonde-hair-expresses-positiveness-poses_176420-13176.jpg?w=996&t=st=1704348318~exp=1704348918~hmac=b1e7c2d3859a1ddc3ee1bd9f260320a2c21748f4e1e1f9a03bc01cf77d6441ae" alt="User" class="rounded-circle"
-                                style="width: 60px; height: 60px; margin-right: 12px;">
-                            <div>
-                                <div class="fw-bold">Carles Nilson</div>
-                                <div class="text-muted small">Yesterday at 5:06 PM</div>
-                                <p>Outlines keep you honest. They stop you from indulging in poorly thought-out
-                                    metaphors about driving and keep you focused on the overall structure of your post.
-                                </p>
-                                <div class="d-flex align-items-center">
-                                    <button class="btn p-0 border-0 text-black me-4 reply-button">Reply</button>
-                                    <button class="btn p-0 border-0 me-4 like-button">
-                                        <i class="far fa-thumbs-up"></i> Like
-                                    </button>
-                                    <button class="btn p-0 border-0 text-primary vote-button">
-                                        <i class="fas fa-vote-yea"></i> Vote
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="reply-form d-none mb-3 ms-5">
-                            <input type="text" class="form-control mb-2" id="feedbackTitle" required placeholder="Name">
-                            <textarea class="form-control mb-2" rows="1" placeholder="Write a reply..."></textarea>
-                            <button class="btn btn-primary btn-sm post-reply">Post Reply</button>
-                        </div>
-                        <div class="replies ms-5"></div>
                     </div>
-             
-              
-           
-       
+                </div>
+
+
+
+
             </div>
         </div>
     </section>
     <!-- end of collection -->
-
-
-
-    <!-- blogs -->
-    <section id="offers" class="py-5">
-        <div class="container">
-            <div
-                class="row d-flex align-items-center justify-content-center text-center justify-content-lg-start text-lg-start">
-                <div class="offers-content">
-                    <span class="text-white">Discount Up To 40%</span>
-                    <h2 class="mt-2 mb-4 text-white">Grand Sale Offer!</h2>
-                    <a href="#" class="btn">Buy Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end of blogs -->
-
-    <!-- blogs -->
-    <section id="blogs" class="py-5">
-        <div class="container">
-            <div class="title text-center py-5">
-                <h2 class="position-relative d-inline-block">Our Latest Blog</h2>
-            </div>
-
-            <div class="row g-3">
-                <div class="card border-0 col-md-6 col-lg-4 bg-transparent my-3">
-                    <img src="images/blog_1.jpg" alt="">
-                    <div class="card-body px-0">
-                        <h4 class="card-title">Lorem ipsum, dolor sit amet consectetur adipisicing</h4>
-                        <p class="card-text mt-3 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Eveniet aspernatur repudiandae nostrum dolorem molestias odio. Sit fugit adipisci omnis quia
-                            itaque ratione iusto sapiente reiciendis, numquam officiis aliquid ipsam fuga.</p>
-                        <p class="card-text">
-                            <small class="text-muted">
-                                <span class="fw-bold">Author: </span>John Doe
-                            </small>
-                        </p>
-                        <a href="#" class="btn">Read More</a>
-                    </div>
-                </div>
-
-                <div class="card border-0 col-md-6 col-lg-4 bg-transparent my-3">
-                    <img src="images/blog_2.jpg" alt="">
-                    <div class="card-body px-0">
-                        <h4 class="card-title">Lorem ipsum, dolor sit amet consectetur adipisicing</h4>
-                        <p class="card-text mt-3 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Eveniet aspernatur repudiandae nostrum dolorem molestias odio. Sit fugit adipisci omnis quia
-                            itaque ratione iusto sapiente reiciendis, numquam officiis aliquid ipsam fuga.</p>
-                        <p class="card-text">
-                            <small class="text-muted">
-                                <span class="fw-bold">Author: </span>John Doe
-                            </small>
-                        </p>
-                        <a href="#" class="btn">Read More</a>
-                    </div>
-                </div>
-
-                <div class="card border-0 col-md-6 col-lg-4 bg-transparent my-3">
-                    <img src="images/blog_3.jpg" alt="">
-                    <div class="card-body px-0">
-                        <h4 class="card-title">Lorem ipsum, dolor sit amet consectetur adipisicing</h4>
-                        <p class="card-text mt-3 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Eveniet aspernatur repudiandae nostrum dolorem molestias odio. Sit fugit adipisci omnis quia
-                            itaque ratione iusto sapiente reiciendis, numquam officiis aliquid ipsam fuga.</p>
-                        <p class="card-text">
-                            <small class="text-muted">
-                                <span class="fw-bold">Author: </span>John Doe
-                            </small>
-                        </p>
-                        <a href="#" class="btn">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end of blogs -->
-
-    <!-- about us -->
-    <section id="about" class="py-5">
-        <div class="container">
-            <div class="row gy-lg-5 align-items-center">
-                <div class="col-lg-6 order-lg-1 text-center text-lg-start">
-                    <div class="title pt-3 pb-5">
-                        <h2 class="position-relative d-inline-block ms-4">About Us</h2>
-                    </div>
-                    <p class="lead text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, ipsam.
-                    </p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem fuga blanditiis, modi
-                        exercitationem quae quam eveniet! Minus labore voluptatibus corporis recusandae accusantium
-                        velit, nemo, nobis, nulla ullam pariatur totam quos.</p>
-                </div>
-                <div class="col-lg-6 order-lg-0">
-                    <img src="https://img.freepik.com/free-photo/bags-with-gifts-top-copy-space_23-2148288233.jpg?w=996&t=st=1704346319~exp=1704346919~hmac=abb54e6034eb4866955f9ff5a79ab96ce5093a8430a431322396a13f1bfb038d"
-                        alt="" class="img-fluid">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end of about us -->
-    <!-- newsletter -->
-    <section id="newsletter" class="py-5">
-        <div class="container">
-            <div class="d-flex flex-column align-items-center justify-content-center">
-                <div class="title text-center pt-3 pb-5">
-                    <h2 class="position-relative d-inline-block ms-4">Newsletter Subscription</h2>
-                </div>
-
-                <p class="text-center text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem
-                    officia accusantium maiores quisquam dolorum?</p>
-                <div class="input-group mb-3 mt-3">
-                    <input type="text" class="form-control" placeholder="Enter Your Email ...">
-                    <button class="btn btn-primary" type="submit">Subscribe</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end of newsletter -->
 
     <!-- footer -->
     <footer class="bg-dark py-5">
@@ -508,7 +419,6 @@
                 }
             });
         });
-
     </script>
 </body>
 

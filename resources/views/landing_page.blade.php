@@ -90,222 +90,27 @@
 
             <div class="row g-0">
                 <div class="collection-list mt-4 row gx-0 gy-3">
-                    <div class="col-md-6 col-lg-3 col-xl-3 p-2 best">
-                        <div class="collection-img position-relative">
-                            <img src="{{ asset('assets/images/c_formal_gray_shirt.png') }}" class="w-100">
-                            <span
-                                class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
-                        </div>
-                        <div class="text-center">
-                            <div class="rating mt-3">
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
+                    @foreach($product as $data)
+                        <div class="col-md-6 col-lg-3 col-xl-3 p-2 best">
+                            <div class="collection-img position-relative">
+                                <img src="{{ asset('/storage/images/product/'.$data->image) }}" class="w-100">
+                                <span
+                                    class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
                             </div>
-                            <p class="text-capitalize my-1">gray shirt</p>
-                            <span class="fw-bold">$ 45.50</span>
-                        </div>
-                        <!-- Feedback Icon Button -->
-                        <button type="button" class="border-0 rounded" data-bs-toggle="modal"
-                            data-bs-target="#feedbackModal">
-                            <i class="fas fa-comment-dots text-primary"></i>
-                        </button>
-                        <button type="button" class="border-0 rounded" data-bs-toggle="modal"
-                            data-bs-target="#viewFeedbackModal">
-                            <i class="fas fa-eye text-primary"></i>
-                        </button>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 col-xl-3 p-2 feat">
-                        <div class="collection-img position-relative">
-                            <img src="{{ asset('assets/images/c_pant_girl.png') }}" class="w-100">
-                            <span
-                                class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
-                        </div>
-                        <div class="text-center">
-                            <div class="rating mt-3">
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
+                            <div class="text-center">
+                                <p class="text-capitalize my-1">{{ $data->name ?? '' }}</p>
+                                <span class="fw-bold">{{ $data->price ?? '' }}</span>
                             </div>
-                            <p class="text-capitalize my-1">gray shirt</p>
-                            <span class="fw-bold">$ 45.50</span>
+                            <!-- Feedback Icon Button -->
+                            <button type="button" class="border-0 rounded" data-bs-toggle="modal"
+                                    data-bs-target="#feedbackModal" data-product-id="{{ $data->id }}">
+                                <i class="fas fa-comment-dots text-primary"></i>
+                            </button>
+                            <a href="{{ route('product.view',$data->id) }}" class="border-0 rounded" >
+                                <i class="fas fa-eye text-primary"></i>
+                            </a>
                         </div>
-                        <button type="button" class="border-0 rounded" data-bs-toggle="modal"
-                            data-bs-target="#feedbackModal">
-                            <i class="fas fa-comment-dots text-primary"></i>
-                        </button>
-                        <button type="button" class="border-0 rounded" data-bs-toggle="modal"
-                            data-bs-target="#viewFeedbackModal">
-                            <i class="fas fa-eye text-primary"></i>
-                        </button>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 col-xl-3 p-2 new">
-                        <div class="collection-img position-relative">
-                            <img src="{{ asset('assets/images/c_polo-shirt.png') }}" class="w-100">
-                            <span
-                                class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
-                        </div>
-                        <div class="text-center">
-                            <div class="rating mt-3">
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                            </div>
-                            <p class="text-capitalize my-1">gray shirt</p>
-                            <span class="fw-bold">$ 45.50</span>
-                        </div>
-                        <button type="button" class="border-0 rounded" data-bs-toggle="modal"
-                            data-bs-target="#feedbackModal">
-                            <i class="fas fa-comment-dots text-primary"></i>
-                        </button>
-                        <button type="button" class="border-0 rounded" data-bs-toggle="modal"
-                            data-bs-target="#viewFeedbackModal">
-                            <i class="fas fa-eye text-primary"></i>
-                        </button>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 col-xl-3 p-2 best">
-                        <div class="collection-img position-relative">
-                            <img src="{{ asset('assets/images/c_shirt-girl.png') }}" class="w-100">
-                            <span
-                                class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
-                        </div>
-                        <div class="text-center">
-                            <div class="rating mt-3">
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                            </div>
-                            <p class="text-capitalize my-1">gray shirt</p>
-                            <span class="fw-bold">$ 45.50</span>
-                        </div>
-                        <button type="button" class="border-0 rounded" data-bs-toggle="modal"
-                            data-bs-target="#feedbackModal">
-                            <i class="fas fa-comment-dots text-primary"></i>
-                        </button>
-                        <button type="button" class="border-0 rounded" data-bs-toggle="modal"
-                            data-bs-target="#viewFeedbackModal">
-                            <i class="fas fa-eye text-primary"></i>
-                        </button>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 col-xl-3 p-2 feat">
-                        <div class="collection-img position-relative">
-                            <img src="{{ asset('assets/images/c_t-shirt_men.png') }}" class="w-100">
-                            <span
-                                class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
-                        </div>
-                        <div class="text-center">
-                            <div class="rating mt-3">
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                            </div>
-                            <p class="text-capitalize my-1">gray shirt</p>
-                            <span class="fw-bold">$ 45.50</span>
-                        </div>
-                        <button type="button" class="border-0 rounded" data-bs-toggle="modal"
-                            data-bs-target="#feedbackModal">
-                            <i class="fas fa-comment-dots text-primary"></i>
-                        </button>
-                        <button type="button" class="border-0 rounded" data-bs-toggle="modal"
-                            data-bs-target="#viewFeedbackModal">
-                            <i class="fas fa-eye text-primary"></i>
-                        </button>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 col-xl-3 p-2 new">
-                        <div class="collection-img position-relative">
-                            <img src="{{ asset('assets/images/c_tunic-shirt_girl.png') }}" class="w-100">
-                            <span
-                                class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
-                        </div>
-                        <div class="text-center">
-                            <div class="rating mt-3">
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                            </div>
-                            <p class="text-capitalize my-1">gray shirt</p>
-                            <span class="fw-bold">$ 45.50</span>
-                        </div>
-                        <button type="button" class="border-0 rounded" data-bs-toggle="modal"
-                            data-bs-target="#feedbackModal">
-                            <i class="fas fa-comment-dots text-primary"></i>
-                        </button>
-                        <button type="button" class="border-0 rounded" data-bs-toggle="modal"
-                            data-bs-target="#viewFeedbackModal">
-                            <i class="fas fa-eye text-primary"></i>
-                        </button>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 col-xl-3 p-2 best">
-                        <div class="collection-img position-relative">
-                            <img src="{{ asset('assets/images/c_undershirt.png') }}" class="w-100">
-                            <span
-                                class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
-                        </div>
-                        <div class="text-center">
-                            <div class="rating mt-3">
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                            </div>
-                            <p class="text-capitalize my-1">gray shirt</p>
-                            <span class="fw-bold">$ 45.50</span>
-                        </div>
-                        <button type="button" class="border-0 rounded" data-bs-toggle="modal"
-                            data-bs-target="#feedbackModal">
-                            <i class="fas fa-comment-dots text-primary"></i>
-                        </button>
-                        <button type="button" class="border-0 rounded" data-bs-toggle="modal"
-                            data-bs-target="#viewFeedbackModal">
-                            <i class="fas fa-eye text-primary"></i>
-                        </button>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 col-xl-3 p-2 feat">
-                        <div class="collection-img position-relative">
-                            <img src="{{ asset('assets/images/c_western-shirt.png') }}" class="w-100">
-                            <span
-                                class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
-                        </div>
-                        <div class="text-center">
-                            <div class="rating mt-3">
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                                <span class="text-primary"><i class="fas fa-star"></i></span>
-                            </div>
-                            <p class="text-capitalize my-1">gray shirt</p>
-                            <span class="fw-bold">$ 45.50</span>
-                        </div>
-                        <button type="button" class="border-0 rounded" data-bs-toggle="modal"
-                            data-bs-target="#feedbackModal">
-                            <i class="fas fa-comment-dots text-primary"></i>
-                        </button>
-                        <button type="button" class="border-0 rounded" data-bs-toggle="modal"
-                            data-bs-target="#viewFeedbackModal">
-                            <i class="fas fa-eye text-primary"></i>
-                        </button>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -527,112 +332,48 @@
     </footer>
     <!-- end of footer -->
     <!-- Feedback Modal -->
-    <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal fade" id="feedbackModal" tabindex="-1"  aria-labelledby="feedbackModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="feedbackModalLabel">Feedback</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form id="feedbackForm">
+                <form class="form" method="Post"  action="{{ route('product.productFeedback') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+
                         <div class="mb-3">
                             <label for="feedbackTitle" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="feedbackTitle" required>
+                            <input type="text" name="title" class="form-control" id="feedbackTitle" required>
                         </div>
                         <div class="mb-3">
                             <label for="feedbackCategory" class="form-label">Category</label>
-                            <select class="form-select" id="feedbackCategory" required>
+                            <select class="form-select" id="feedbackCategory" name="category_id" required>
                                 <option value="">Choose...</option>
-                                <option value="bug">Bug Report</option>
-                                <option value="feature">Feature Request</option>
-                                <option value="improvement">Improvement</option>
+                                <option value="1">Bug Report</option>
+                                <option value="2">Feature Request</option>
+                                <option value="3">Improvement</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="feedbackDescription" class="form-label">Description</label>
-                            <textarea class="form-control" id="feedbackDescription" rows="3" required></textarea>
+                            <textarea class="form-control" id="feedbackDescription" name="description" rows="3" required></textarea>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn bg-primary text-white border border-primary"
-                        form="feedbackForm">Submit Feedback</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" id="productId" name="product_id" value="">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn bg-primary text-white border border-primary" >Submit Feedback</button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
 
-    <!-- View Feedback Modal -->
-    <div class="modal fade" id="viewFeedbackModal" tabindex="-1" aria-labelledby="viewFeedbackModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="viewFeedbackModalLabel">View Feedback</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="feedbackItems">
-                    <div class="feedback-item mb-3">
-                        <div class="d-flex mb-2">
-                            <img src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=996&t=st=1704346895~exp=1704347495~hmac=4700270e7e8a972f2bef5bd026e32136ac33489968951d563263f2b44f9003f6" alt="User" class="rounded-circle"
-                                style="width: 60px; height: 60px; margin-right: 12px;">
-                            <div>
-                                <div class="fw-bold">Carles Nilson</div>
-                                <div class="text-muted small">Yesterday at 5:06 PM</div>
-                                <p>Outlines keep you honest. They stop you from indulging in poorly thought-out
-                                    metaphors about driving and keep you focused on the overall structure of your post.
-                                </p>
-                                <div class="d-flex align-items-center">
-                                    <button class="btn p-0 border-0 text-black me-4 reply-button">Reply</button>
-                                    <button class="btn p-0 border-0 me-4 like-button">
-                                        <i class="far fa-thumbs-up"></i> Like
-                                    </button>
-                                    <button class="btn p-0 border-0 text-primary vote-button">
-                                        <i class="fas fa-vote-yea"></i> Vote
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="reply-form d-none mb-3 ms-5">
-                            <input type="text" class="form-control mb-2" id="feedbackTitle" required placeholder="Name">
-                            <textarea class="form-control mb-2" rows="1" placeholder="Write a reply..."></textarea>
-                            <button class="btn btn-primary btn-sm post-reply">Post Reply</button>
-                        </div>
-                        <div class="d-flex mb-2">
-                            <img src="https://img.freepik.com/free-photo/horizontal-portrait-smiling-happy-young-pleasant-looking-female-wears-denim-shirt-stylish-glasses-with-straight-blonde-hair-expresses-positiveness-poses_176420-13176.jpg?w=996&t=st=1704348318~exp=1704348918~hmac=b1e7c2d3859a1ddc3ee1bd9f260320a2c21748f4e1e1f9a03bc01cf77d6441ae" alt="User" class="rounded-circle"
-                                style="width: 60px; height: 60px; margin-right: 12px;">
-                            <div>
-                                <div class="fw-bold">Carles Nilson</div>
-                                <div class="text-muted small">Yesterday at 5:06 PM</div>
-                                <p>Outlines keep you honest. They stop you from indulging in poorly thought-out
-                                    metaphors about driving and keep you focused on the overall structure of your post.
-                                </p>
-                                <div class="d-flex align-items-center">
-                                    <button class="btn p-0 border-0 text-black me-4 reply-button">Reply</button>
-                                    <button class="btn p-0 border-0 me-4 like-button">
-                                        <i class="far fa-thumbs-up"></i> Like
-                                    </button>
-                                    <button class="btn p-0 border-0 text-primary vote-button">
-                                        <i class="fas fa-vote-yea"></i> Vote
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="reply-form d-none mb-3 ms-5">
-                            <input type="text" class="form-control mb-2" id="feedbackTitle" required placeholder="Name">
-                            <textarea class="form-control mb-2" rows="1" placeholder="Write a reply..."></textarea>
-                            <button class="btn btn-primary btn-sm post-reply">Post Reply</button>
-                        </div>
-                        <div class="replies ms-5"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- jquery -->
     <script src="{{ asset('assets/js/jquery-3.6.0.js') }}"></script>
+    <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
     <!-- isotope js -->
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
     <!-- bootstrap js -->
@@ -642,6 +383,11 @@
 
     <!-- Custom JS -->
     <script>
+        $('#feedbackModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var productId = button.data('product-id');
+            $('#productId').val(productId);
+        });
         $(document).ready(function () {
             $(document).on('click', '.reply-button', function () {
                 $(this).closest('.feedback-item').find('.reply-form').toggleClass('d-none');
@@ -669,6 +415,7 @@
         });
 
     </script>
+    <x-flash :type="session()->get('type')" :title="session()->get('title')" :message="session()->get('message')" />
 </body>
 
 </html>

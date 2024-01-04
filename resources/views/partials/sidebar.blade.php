@@ -51,7 +51,7 @@
                 <!--begin:Menu item-->
                 <div  class="menu-item menu-accordion {{ request()->routeIs('user.*') ? 'here show':'' }}">
                     <!--begin:Menu link-->
-                    <span class="menu-link">
+{{--                    <span class="menu-link">--}}
                         <a class="menu-link" href="{{ route('user.list') }}">
                              <span class="menu-icon">
                             <i class="ki-duotone ki-address-book fs-2">
@@ -63,7 +63,7 @@
                             <span class="menu-title">User</span>
                         </a>
 
-                    </span>
+{{--                    </span>--}}
                     <!--end:Menu link-->
 
                 </div>
@@ -78,17 +78,18 @@
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                <div  class="menu-item {{ request()->routeIs('product.*') ? 'here show':'' }} menu-accordion">
                     <!--begin:Menu link-->
-                    <span class="menu-link">
+{{--                    <span class="menu-link">--}}
+                        <a class="menu-link" href="{{ route('product.list') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-abstract-41 fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </i>
                         </span>
-                        <span class="menu-title">Projects</span>
-                    </span>
+                        <span class="menu-title">Product</span>
+                    </a>
                     <!--end:Menu link-->
                 </div>
                 <!--end:Menu item-->
@@ -102,17 +103,18 @@
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                <div  class="menu-item menu-accordion {{ request()->routeIs('feedback.*') ? 'here show':'' }}">
                     <!--begin:Menu link-->
-                    <span class="menu-link">
+
+                    <a class="menu-link" href="{{ route('feedback.list') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-element-7 fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </i>
                         </span>
-                        <span class="menu-title">Layout Options</span>
-                    </span>
+                        <span class="menu-title">Feedback & Comments</span>
+                    </a>
                     <!--end:Menu link-->
                 </div>
             </div>
