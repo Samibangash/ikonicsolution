@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('landing_page');
+    return view('Product.product_feedback');
 });
 
 //Route::get('/dashboard', function () {
